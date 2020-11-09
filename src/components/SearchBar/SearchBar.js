@@ -25,6 +25,7 @@ class SearchBar extends React.Component {
         this.handleSearch = this.handleSearch.bind(this);
     }
 
+    //work with function on line 59
     getSortByClass(sortByOption){
         if(this.state.sortBy === sortByOption){
             return 'active';
@@ -33,6 +34,7 @@ class SearchBar extends React.Component {
         }
     }
 
+    //work with function on line 59
     handleSortByChange(sortByOption){
         this.setState({
             sortBy: sortByOption
@@ -57,8 +59,11 @@ class SearchBar extends React.Component {
     }
 
     renderSortByOptions() {
+        //Convert sortByOtions to an Array and map it, ["Best Match", "Highest Rated", "Most Reviewed"]
         return Object.keys(this.sortByOptions).map(sortByOption => {
+            //Get value, vary by every element. ["best_match", "rating", "review_count"]
             let sortByOptionValue = this.sortByOptions[sortByOption];
+            //Re-render className for React's setState function on line 36, whitch would execute after click this list
         return <li key={sortByOptionValue} className={this.getSortByClass(sortByOptionValue)} onClick={this.handleSortByChange.bind(this,sortByOptionValue)}>{sortByOption}</li>
         });
     }
